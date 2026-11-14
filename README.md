@@ -1,28 +1,20 @@
 # React TypeScript Enterprise Authentication System
 
-A fully functional, secure, HIPAA-compliant client-side user authentication system built with React and TypeScript. This enterprise-grade solution is designed to handle thousands of users while providing strong encryption and full HIPAA compliance.
+An educational, client-side React and TypeScript authentication prototype. The project explores authentication UI, authorization flows, local data storage, and auditing patterns. **It has not been assessed for HIPAA compliance or production security; do not use it with real credentials or protected health information (PHI).**
 
-## Enterprise Security Features
+## Experimental authentication and administration features
 
-- 🔒 **HIPAA Compliance** - Advanced AES-256 encryption with CBC mode
+- 🔒 **Encryption experiment** - Browser-side AES-CBC implementation (not a validated security boundary)
 - 👤 **Role-Based Access Control** - Strict admin vs regular user permissions
 - 📊 **Enterprise-Ready Admin Dashboard** - View and manage thousands of users
 - 📝 **Comprehensive Audit Logging** - Complete audit trail with pagination
-- 🛡️ **Enhanced Security** - PBKDF2 password hashing with 10,000 iterations
-- 🔐 **Secure Local Storage** - All data encrypted with industry-standard protocols
+- 🛡️ **Password-hashing experiment** - PBKDF2 with 10,000 iterations (not a production-ready password policy)
+- 🔐 **Local storage prototype** - Stores demonstration data in the browser; client-controlled data is not authoritative
 - 📈 **Optimized for Scale** - Indexed data structures for fast lookups with large datasets
 
-## Legal Compliance
+## Security and compliance limitations
 
-This system is engineered to meet HIPAA (Health Insurance Portability and Accountability Act) requirements:
-
-- **Data Encryption**: All Protected Health Information (PHI) is secured using AES-256 CBC encryption
-- **Access Controls**: Role-based permissions strictly enforced at all levels
-- **Audit Controls**: Comprehensive, tamper-evident audit logging with cryptographic integrity
-- **Data Integrity**: All database operations maintain data consistency with transaction-like rollback
-- **Authentication**: Secure password handling with industry-standard PBKDF2 hashing
-- **Authorization**: Granular permissions and explicit admin approval flow
-- **Emergency Access**: Admin override capabilities for emergency situations
+This repository is **not HIPAA-compliant by assertion** and has no published independent compliance validation. Browser-side authorization and local storage can be modified by users. Real authentication requires trusted server-side validation, secure secret management, threat modeling, security testing, logging protections, and appropriate legal/compliance review. **Do not store real user passwords, payment information, or PHI in this prototype.**
 
 ## Project Structure
 
@@ -48,7 +40,7 @@ src/
 
 ## Performance Optimizations
 
-This system includes specialized optimizations for handling thousands of users:
+The project explores UI/data techniques that would require benchmarking and threat-model validation before supporting thousands of real users:
 
 1. **Indexed Data Structures**: Email → User ID mappings for O(1) lookups
 2. **Memory Caching**: User session caching to minimize storage reads
@@ -56,12 +48,12 @@ This system includes specialized optimizations for handling thousands of users:
 4. **Optimized DOM Rendering**: Virtualized scrolling for large data tables
 5. **Smart Data Loading**: Only load what's needed when it's needed
 
-## How Enterprise Authentication Works
+## Demonstration authentication design (unverified for production)
 
-1. **Encrypted Storage**: User data encrypted using AES-256 with CBC mode before storage
+1. **Local encrypted storage experiment**: Client-controlled storage and keys do not replace server-side trust
 2. **Password Security**: Passwords hashed using PBKDF2 with 10,000 iterations and unique 32-byte salt per user
-3. **Role-Based Access**: Admin privileges strictly controlled and verified on every operation
-4. **Audit Logging**: All system events logged with timestamps, user info, and detailed actions
+3. **Role-based UI demo**: Browser-side checks cannot enforce real-world authorization
+4. **Local audit records**: Not tamper-resistant or a substitute for trustworthy server logs
 5. **Admin Dashboard**: Secure administrative interface with pagination for large datasets
 
 ## Administrator Access
@@ -110,13 +102,9 @@ The admin dashboard allows authorized administrators to:
    npm install @types/crypto-js --save-dev
    ```
 
-### Option 2: NPM Package (Coming Soon)
+### Option 2: NPM Package (Not published)
 
-This authentication system will be available as an NPM package for even easier integration:
-
-```
-npm install react-enterprise-auth
-```
+This repository has not been verified as a published package. Clone the source for educational review rather than relying on `npm install react-enterprise-auth`.
 
 ## Integration Instructions
 
@@ -179,7 +167,7 @@ npm install react-enterprise-auth
 
 ### Change Encryption Key
 
-For security, always use your own encryption key in production:
+This example contains a client-side key setting, which **cannot safely protect production secrets**. Do not treat changing a bundled key as a production security control:
 
 ```typescript
 // in src/utils/database.ts
@@ -207,7 +195,7 @@ const LOGS_STORAGE_KEY = "your_app_name_logs";
 
 ## Legal Notice
 
-While this system implements industry-standard security practices for HIPAA compliance, organizations must perform their own compliance assessments based on their specific use cases and risk profiles. The author provides this software as-is without warranty of fitness for a particular purpose.
+This is an educational prototype, not a compliance-certified or production-grade authentication system. Independent security review and regulatory assessment are required before any sensitive use. The software is provided as-is.
 
 ## Author
 
@@ -225,7 +213,7 @@ This project is configured to automatically deploy to GitHub Pages when you push
 2. Configures it for SPA routing on GitHub Pages
 3. Deploys it to the gh-pages branch
 
-To view your deployed app, go to: `https://[your-username].github.io/[repo-name]`
+If GitHub Pages is configured successfully for this repository, the expected project URL is `https://tyler-keesee.github.io/Enterprise-Authentication-System/`. Live deployment is not verified.
 
 ### Manual Deployment
 
@@ -278,7 +266,7 @@ npx serve -s build
 - MFA support
 - Session timeout
 - Detailed audit logging
-- HIPAA-compliant data handling
+- Demonstration-only data handling (no HIPAA compliance claim)
 
 ## Browser Support
 
