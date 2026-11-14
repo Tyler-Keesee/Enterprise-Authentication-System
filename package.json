@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Enterprise-grade authentication system with SSO, passwordless auth, rate limiting, device management, and analytics",
   "private": true,
-  "homepage": "https://tyler1201623.github.io/Enterprise-Authentication-System/",
+  "homepage": "https://tyler-keesee.github.io/Enterprise-Authentication-System/",
   "scripts": {
     "start": "vite",
     "build": "vite build --debug",
