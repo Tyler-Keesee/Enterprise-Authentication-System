@@ -203,7 +203,7 @@ Created by Tyler Keesee
 
 ## License
 
-MIT
+No license file is currently committed; a license grant has not been established. Add a complete license if you intend to distribute this under MIT.
 
 ## Deployment to GitHub Pages
 
