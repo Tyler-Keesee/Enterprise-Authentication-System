@@ -1,5 +1,40 @@
 # React TypeScript Enterprise Authentication System
 
+## Windows 11 PowerShell quick start, one command at a time
+
+Requires Git and Node.js 22 LTS. This is a **client-side React/TypeScript security prototype**, not a deployable identity service.
+
+```powershell
+git clone https://github.com/Tyler-Keesee/Enterprise-Authentication-System.git
+```
+
+```powershell
+Set-Location .\Enterprise-Authentication-System
+```
+
+```powershell
+node --version
+```
+
+```powershell
+npm --version
+```
+
+```powershell
+npm ci
+```
+
+```powershell
+npm run dev
+```
+
+Open the localhost URL Vite prints (normally http://localhost:5173/). Ctrl+C stops it. Run `npm run build` as a separate compilation check. **Do not use real passwords, payment data, or health information.** This prototype has no authoritative server-side authentication. Browser-side roles can be tampered with.
+
+**Verification:** Successful installation and syntax checks do not prove the entire system works. Run the repository's documented manual tests before relying on it.
+
+---
+
+
 An educational, client-side React and TypeScript authentication prototype. The project explores authentication UI, authorization flows, local data storage, and auditing patterns. **It has not been assessed for HIPAA compliance or production security; do not use it with real credentials or protected health information (PHI).**
 
 ## Experimental authentication and administration features
