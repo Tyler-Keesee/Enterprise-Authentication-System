@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Navigate, Route, HashRouter as Router, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import AdminDashboard from './components/AdminDashboard';
 import AuthFormSwitcher from './components/AuthFormSwitcher';
 import Dashboard from './components/Dashboard';
@@ -30,8 +30,7 @@ const App: React.FC = () => {
   }, [user, isAdmin]);
   
   return (
-    <Router>
-      <div className="app">
+    <div className="app">
         <Header />
         
         <main className="main-content">
@@ -98,8 +97,7 @@ const App: React.FC = () => {
         </main>
         
         <Footer />
-      </div>
-    </Router>
+    </div>
   );
 };
 
