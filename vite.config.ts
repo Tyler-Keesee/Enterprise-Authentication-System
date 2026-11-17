@@ -20,7 +20,7 @@ export default defineConfig({
   },
   resolve: {
     alias: [
-      { find: /^jspdf$/, replacement: fileURLToPath(new URL("./node_modules/jspdf/dist/jspdf.es.min.js", import.meta.url)) },
+      { find: /^jspdf$/, replacement: fileURLToPath(new URL("./node_modules/jspdf/dist/jspdf.umd.min.js", import.meta.url)) },
       { find: /^jspdf-autotable$/, replacement: fileURLToPath(new URL("./node_modules/jspdf-autotable/dist/jspdf.plugin.autotable.mjs", import.meta.url)) },
       { find: /^process$/, replacement: "process/browser" },
     ],
