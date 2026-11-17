@@ -1,0 +1,27 @@
+name: Temporary npm lock synchronization
+on:
+  push:
+    branches: [fix/node22-reproducible-build-2026]
+permissions:
+  contents: write
+jobs:
+  lockfile:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm install --package-lock-only --ignore-scripts --no-audit --no-fund --legacy-peer-deps
+      - run: npm ci --ignore-scripts --no-audit --no-fund --legacy-peer-deps
+      - name: Commit lockfile to repair branch only
+        shell: bash
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          if ! git diff --quiet -- package-lock.json; then
+            git add package-lock.json
+            git commit -m 'Synchronize Vite 6 dependency lock [skip ci]'
+            git push origin HEAD:refs/heads/fix/node22-reproducible-build-2026
+          fi
