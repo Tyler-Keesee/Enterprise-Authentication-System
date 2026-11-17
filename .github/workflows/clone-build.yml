@@ -1,0 +1,26 @@
+name: Verify clean Node 22 build
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [windows-latest, ubuntu-latest]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - name: Install pinned dependencies
+        run: npm ci
+      - name: Compile application
+        run: npm run build
+      - name: Confirm output exists
+        shell: pwsh
+        run: if (-not (Test-Path "dist/index.html")) { throw "Vite did not emit dist/index.html" }
