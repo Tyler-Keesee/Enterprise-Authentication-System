@@ -2,6 +2,7 @@
 
 import react from "@vitejs/plugin-react";
 import { defineConfig } from "vite";
+import { fileURLToPath } from "node:url";
 
 export default defineConfig({
   plugins: [react()],
@@ -18,9 +19,11 @@ export default defineConfig({
     },
   },
   resolve: {
-    alias: {
-      process: "process/browser",
-    },
+    alias: [
+      { find: /^jspdf$/, replacement: fileURLToPath(new URL("./node_modules/jspdf/dist/jspdf.es.min.js", import.meta.url)) },
+      { find: /^jspdf-autotable$/, replacement: fileURLToPath(new URL("./node_modules/jspdf-autotable/dist/jspdf.plugin.autotable.mjs", import.meta.url)) },
+      { find: /^process$/, replacement: "process/browser" },
+    ],
   },
   define: {
     "process.env": {},
