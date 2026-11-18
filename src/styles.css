@@ -1280,3 +1280,37 @@ body {
   color: var(--success-color);
   margin-bottom: 16px;
 } 
+
+/* Auth CTA contrast and touch/focus resilience: the earlier browser
+   view rendered white text against an almost-white submit surface. */
+.auth-page .auth-form-content .submit-button,
+.auth-page .alt-auth-form .submit-button {
+  display: block;
+  width: 100%;
+  min-height: 48px;
+  background-color: #1d4ed8;
+  background-image: linear-gradient(135deg, #2563eb, #1d4ed8);
+  color: #fff;
+  opacity: 1;
+  border-radius: 10px;
+  font-weight: 700;
+}
+.auth-page .auth-form-content .submit-button:focus-visible,
+.auth-page .alt-auth-form .submit-button:focus-visible,
+.auth-page button:focus-visible,
+.auth-page a:focus-visible {
+  outline: 3px solid #1e40af;
+  outline-offset: 3px;
+}
+@media (max-width: 480px) {
+  .auth-page .auth-container { width: 100%; min-width: 0; padding: 1rem; }
+  .auth-page .auth-content { min-width: 0; width: 100%; }
+  .auth-page .auth-header { gap: 0.75rem; flex-wrap: wrap; }
+  .auth-page .auth-header h1 { font-size: clamp(1.4rem, 6vw, 1.75rem); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .auth-page *, .auth-page *::before, .auth-page *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
